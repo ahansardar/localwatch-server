@@ -1,0 +1,28 @@
+name: Feature request
+description: Propose a focused improvement to LocalWatch
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would a good solution feel like?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: principles
+    attributes:
+      label: Product fit
+      options:
+        - label: This keeps the core viewing experience usable without internet access.
+          required: true

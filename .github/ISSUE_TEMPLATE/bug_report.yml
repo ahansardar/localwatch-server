@@ -1,0 +1,53 @@
+name: Bug report
+description: Tell us about a reproducible LocalWatch problem
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping make LocalWatch sturdier.
+  - type: input
+    id: version
+    attributes:
+      label: LocalWatch version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Host device and Android version
+      placeholder: "Pixel 8, Android 16"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the browser/device used by viewers when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Choose…
+        2. Start…
+        3. Open…
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Remove private folder names, IP addresses, and media details before posting.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched for an existing issue.
+          required: true
+        - label: I tested with the latest release.
+          required: true
