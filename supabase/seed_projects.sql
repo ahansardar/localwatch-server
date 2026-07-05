@@ -46,12 +46,35 @@ values (
     'https://raw.githubusercontent.com/ahansardar/localwatch-server/main/docs/screenshots/web-library-desktop.png'
   ]::text[],
   'Sole developer — product design, Android development, embedded web UI, local networking, media streaming, testing, release engineering, and documentation.',
-  jsonb_build_object(
-    'network_streaming', 'Implemented correct HTTP Range, 206 Partial Content, Content-Range, and bounded streaming so browser playback can seek without loading an entire file.',
-    'privacy', 'Used Android''s Storage Access Framework, persisted read-only permissions, and opaque media IDs so filesystem paths are never exposed to viewers.',
-    'offline_viewer', 'Embedded the complete HTML, CSS, JavaScript, icons, and player experience inside the Android app so viewers need no internet connection.',
-    'android_lifecycle', 'Kept the server reliable through a foreground service, configurable keep-awake behavior, and clear start and stop controls.',
-    'updates', 'Built a GitHub Releases update flow with Markdown release notes, visible progress, optional SHA-256 verification, and Android installer handoff.'
+  jsonb_build_array(
+    jsonb_build_object(
+      'solution', 'Implemented standards-compliant HTTP Range handling with 206 Partial Content responses, Content-Range headers, and bounded input streams.',
+      'challenge', 'Supporting smooth browser seeking without loading an entire video into memory'
+    ),
+    jsonb_build_object(
+      'solution', 'Used Android''s Storage Access Framework with persisted read-only permissions and opaque media IDs so viewers never receive filesystem paths.',
+      'challenge', 'Sharing user-selected media while respecting Android scoped-storage and privacy rules'
+    ),
+    jsonb_build_object(
+      'solution', 'Embedded the complete HTML, CSS, JavaScript, icons, and player interface in the APK and served every asset from the phone.',
+      'challenge', 'Delivering a polished browser experience that works completely without internet access'
+    ),
+    jsonb_build_object(
+      'solution', 'Ran the HTTP server through an Android foreground service with clear lifecycle controls, notifications, configurable ports, and optional keep-awake behavior.',
+      'challenge', 'Keeping the local server reliable while Android activities pause, rotate, or move to the background'
+    ),
+    jsonb_build_object(
+      'solution', 'Added container detection, browser-friendly MIME types, download controls, and VLC guidance for media that a browser cannot decode.',
+      'challenge', 'Handling inconsistent video codec support across phones, tablets, laptops, and smart TVs'
+    ),
+    jsonb_build_object(
+      'solution', 'Built a GitHub Releases updater with Markdown release notes, visible download progress, optional SHA-256 verification, and Android installer handoff.',
+      'challenge', 'Providing trustworthy application updates without an app-store dependency'
+    ),
+    jsonb_build_object(
+      'solution', 'Separated scanning, server, settings, and UI state responsibilities and used Compose state carefully to keep dashboards and library views responsive.',
+      'challenge', 'Maintaining a responsive Jetpack Compose interface while scanning storage and serving multiple clients'
+    )
   ),
   array[
     'Released a complete open-source v1.0.0 Android application',
@@ -61,10 +84,8 @@ values (
     'Established automated Android build verification and a signed release workflow'
   ]::text[],
   jsonb_build_object(
-    'repository', 'https://github.com/ahansardar/localwatch-server',
-    'release', 'https://github.com/ahansardar/localwatch-server/releases/latest',
-    'issues', 'https://github.com/ahansardar/localwatch-server/issues',
-    'license', 'https://github.com/ahansardar/localwatch-server/blob/main/LICENSE'
+    'live', 'https://github.com/ahansardar/localwatch-server/releases',
+    'github', 'https://github.com/ahansardar/localwatch-server'
   ),
   array[
     'Open source under the MIT License',
@@ -95,15 +116,54 @@ values (
   json_build_array(
     json_build_object(
       'version', '1.0.0',
-      'date', '2026-07-05',
-      'status', 'stable',
-      'release_url', 'https://github.com/ahansardar/localwatch-server/releases/tag/v1.0.0',
-      'highlights', json_build_array(
-        'Native Android host application',
-        'Responsive offline browser viewer',
-        'Seekable byte-range video streaming',
-        'PIN protection and download controls',
-        'GitHub-powered application updates'
+      'download_url', 'https://github.com/ahansardar/localwatch-server/releases/tag/v1.0.0',
+      'title', 'First Public Release',
+      'sections', json_build_array(
+        json_build_object(
+          'category', 'Android Host & Storage',
+          'features', json_build_array(
+            'Native Kotlin and Jetpack Compose host application',
+            'Secure folder selection through Android''s Storage Access Framework',
+            'Foreground local server with start, stop, copy, share, and QR controls',
+            'Folder rescanning, recent-client visibility, and configurable keep-awake behavior'
+          )
+        ),
+        json_build_object(
+          'category', 'Local Streaming & Playback',
+          'features', json_build_array(
+            'HTTP byte-range streaming with seek support',
+            'Bounded media streaming without loading complete files into memory',
+            'Optional original-file downloads controlled by the host',
+            'MP4, MKV, WebM, AVI, MOV, and M4V container discovery'
+          )
+        ),
+        json_build_object(
+          'category', 'Browser Viewer',
+          'features', json_build_array(
+            'Responsive browser library for phones, tablets, laptops, and TVs',
+            'Video search, sorting, and grid or list layouts',
+            'Built-in player with playback-speed, fullscreen, sharing, and download controls',
+            'Fully embedded HTML, CSS, JavaScript, icons, and player assets for offline use'
+          )
+        ),
+        json_build_object(
+          'category', 'Privacy & Access Controls',
+          'features', json_build_array(
+            'Optional PIN protection for the shared library',
+            'Opaque media identifiers with no exposed filesystem paths',
+            'No accounts, analytics, advertising, or cloud media uploads',
+            'All viewing and streaming stays on the local Wi-Fi network or hotspot'
+          )
+        ),
+        json_build_object(
+          'category', 'Updates & Release Engineering',
+          'features', json_build_array(
+            'Daily update checks through the GitHub Releases API',
+            'Markdown release notes with visible APK download progress',
+            'Optional SHA-256 verification before installer handoff',
+            'JUnit coverage, Gradle build verification, and signed release support'
+          )
+        )
       )
     )
   )
