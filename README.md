@@ -43,6 +43,18 @@ flowchart LR
 
 Everything stays between the host phone and devices reachable over the same Wi-Fi network or hotspot.
 
+## Screenshots
+
+<div align="center">
+  <img src="docs/screenshots/android-dashboard-running.png" width="300" alt="LocalWatch Android dashboard with the local server running">
+  &nbsp;&nbsp;
+  <img src="docs/screenshots/android-library.png" width="300" alt="LocalWatch Android video library">
+</div>
+
+<br>
+
+![LocalWatch responsive browser library](docs/screenshots/web-library-desktop.png)
+
 ## Install
 
 1. Download the signed APK from the [latest GitHub release](https://github.com/ahansardar/localwatch-server/releases/latest).
